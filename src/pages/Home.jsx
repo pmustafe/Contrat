@@ -21,7 +21,7 @@ export default function Home() {
               transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
               className="inline-block bg-[var(--brand)] text-white px-4 py-2 rounded-lg shadow-lg"
             >
-              Mais de 50 contratações de qualidade.
+              Mais de 50 contratações de qualidade mensais.
             </motion.div>
             <div>
               <Link to="/vagas" className="inline-block bg-[var(--brand)] hover:bg-blue-900 text-white px-6 py-3 rounded-lg shadow transition transform hover:scale-105">
