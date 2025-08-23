@@ -11,7 +11,7 @@ export default function Home() {
       className="text-center space-y-10"
     >
       <section className="relative rounded-xl overflow-hidden shadow">
-        <img src="https://images.unsplash.com/photo-1529336953121-c9e3ff1e62a8?q=80&w=1920&auto=format&fit=crop" alt="Escritório" className="w-full h-80 object-cover" />
+        <img src="https://i.imgur.com/mYevP7q.jpeg" alt="Escritório" className="w-full h-80 object-cover" />
         <div className="absolute inset-0 bg-black/50 grid place-items-center px-4">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow">Contrat Gente e Gestão</h1>
