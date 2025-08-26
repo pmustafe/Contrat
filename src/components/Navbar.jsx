@@ -18,6 +18,7 @@ export default function Navbar() {
           <Link to="/sobre" className={linkCls(pathname === "/sobre")}>Quem Somos</Link>
           <Link to="/vagas" className={linkCls(pathname === "/vagas")}>Vagas</Link>
           <Link to="/contato" className={linkCls(pathname === "/contato")}>Contato</Link>
+          <Link to="/curriculo" className={linkCls(pathname === "/curriculo")}>Currículo</Link>
           <Link to="/login" className={linkCls(pathname === "/login")}>Admin</Link>
         </div>
       </div>
