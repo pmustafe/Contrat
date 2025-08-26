@@ -8,6 +8,7 @@ import Vagas from "./pages/Vagas";
 import Contato from "./pages/Contato";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import Curriculo from "./pages/Curriculo";
 
 export const VagasContext = React.createContext();
 const STORAGE_KEY = "contrat_jobs_v1";
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/vagas" element={<Vagas />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/curriculo" element={<Curriculo />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
