@@ -8,9 +8,11 @@ import Vagas from "./pages/Vagas";
 import Contato from "./pages/Contato";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import Curriculo from "./pages/Curriculo";
 
 export const VagasContext = React.createContext();
 const STORAGE_KEY = "contrat_jobs_v1";
+const CURRICULOS_KEY = "contrat_curriculos_v1";
 
 const SEEDS = [
   { titulo: "Auxiliar Administrativo", area: "Administrativo", local: "Franca/SP", modalidade: "Presencial", tipo: "CLT", senioridade: "Júnior", descricao: "Atendimento e apoio a rotinas administrativas.", competencias: "Pacote Office, boa comunicação.", salario: "R$ 2.000", beneficios: "VT, VR", status: "Disponível" },
@@ -30,13 +32,31 @@ export default function App() {
     }
   });
 
+  const [curriculos, setCurriculos] = useState(() => {
+    try {
+      const raw = localStorage.getItem(CURRICULOS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
+
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(vagas));
     } catch {}
   }, [vagas]);
 
-  const ctx = useMemo(() => ({ vagas, setVagas }), [vagas]);
+  useEffect(() => {
+    try {
+      localStorage.setItem(CURRICULOS_KEY, JSON.stringify(curriculos));
+    } catch {}
+  }, [curriculos]);
+
+  const ctx = useMemo(
+    () => ({ vagas, setVagas, curriculos, setCurriculos }),
+    [vagas, curriculos]
+  );
 
   return (
     <VagasContext.Provider value={ctx}>
@@ -48,6 +68,7 @@ export default function App() {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/vagas" element={<Vagas />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/curriculo" element={<Curriculo />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>

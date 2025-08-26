@@ -3,7 +3,7 @@ import { VagasContext } from "../App";
 import { motion } from "framer-motion";
 
 export default function Admin() {
-  const { vagas, setVagas } = useContext(VagasContext);
+  const { vagas, setVagas, curriculos, setCurriculos } = useContext(VagasContext);
   const [nova, setNova] = useState({
     titulo: "", area: "", local: "", modalidade: "Presencial", tipo: "CLT", senioridade: "Júnior",
     descricao: "", competencias: "", salario: "", beneficios: "", status: "Disponível"
@@ -18,6 +18,7 @@ export default function Admin() {
   };
   const removeAt = (i) => setVagas(vagas.filter((_, idx) => idx !== i));
   const toggleStatus = (i) => setVagas(vagas.map((v, idx) => idx === i ? { ...v, status: v.status === "Disponível" ? "Indisponível" : "Disponível" } : v));
+  const removeCurriculo = (i) => setCurriculos(curriculos.filter((_, idx) => idx !== i));
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
@@ -60,6 +61,20 @@ export default function Admin() {
               <button onClick={() => toggleStatus(i)} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white text-sm">Alternar</button>
               <button onClick={() => removeAt(i)} className="px-3 py-1 rounded bg-rose-600 hover:bg-rose-700 text-white text-sm">Remover</button>
             </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-xl font-semibold mt-6 mb-2">Currículos cadastrados</h2>
+      <div className="grid gap-3">
+        {curriculos.map((c, i) => (
+          <div key={i} className="rounded-xl border bg-white p-4 flex items-center justify-between">
+            <div>
+              <div className="font-medium">{c.nome}</div>
+              <div className="text-sm text-slate-600">{c.email}{c.telefone ? ` • ${c.telefone}` : ""}</div>
+              <div className="text-sm text-slate-600">{c.dataNascimento ? `${c.dataNascimento} • ` : ""}{c.localidade}</div>
+            </div>
+            <button onClick={() => removeCurriculo(i)} className="px-3 py-1 rounded bg-rose-600 hover:bg-rose-700 text-white text-sm">Remover</button>
           </div>
         ))}
       </div>
